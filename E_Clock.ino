@@ -313,154 +313,127 @@ void r_its()
 }
 void r_mfive()
 {
-  ledMatrix[2][0] = 1;
-  ledMatrix[2][1] = 1;
-  ledMatrix[2][2] = 1;
-  ledMatrix[2][3] = 1;
-  Serial.print("mfive ");
+ ledMatrix[2][0] = 1;
+ ledMatrix[2][1] = 1;
+ ledMatrix[2][2] = 1;
+ Serial.print("mfive ");
 }
 
 void r_mten()
 {
- ledMatrix[0][13] = 1;
- ledMatrix[0][14] = 1;
- ledMatrix[0][15] = 1;
+ ledMatrix[0][6] = 1;
+ ledMatrix[0][7] = 1;
  Serial.print("mten ");
 }
 
 void r_quarter()
 {
+ ledMatrix[1][0] = 1;
+ ledMatrix[1][1] = 1;
  ledMatrix[1][2] = 1;
  ledMatrix[1][3] = 1;
- ledMatrix[1][4] = 1;
- ledMatrix[1][5] = 1;
- ledMatrix[1][6] = 1;
- ledMatrix[1][7] = 1;
- ledMatrix[1][8] = 1;
  Serial.print("mquarter ");
 }
 
 void r_mtwenty ()
 {
- ledMatrix[1][10] = 1;
- ledMatrix[1][11] = 1;
- ledMatrix[1][12] = 1;
- ledMatrix[1][13] = 1;
- ledMatrix[1][14] = 1;
- ledMatrix[1][15] = 1;
+ ledMatrix[1][4] = 1;
+ ledMatrix[1][5] = 1;
+ ledMatrix[1][6] = 1;
+ ledMatrix[1][7] = 1;
  Serial.print("mtwenty ");
 }
  
 void r_mtwenty_five()
 {
- ledMatrix[1][10] = 1;
- ledMatrix[1][11] = 1;
- ledMatrix[1][12] = 1;
- ledMatrix[1][13] = 1;
- ledMatrix[1][14] = 1;
- ledMatrix[1][15] = 1;
+ ledMatrix[1][4] = 1;
+ ledMatrix[1][5] = 1;
+ ledMatrix[1][6] = 1;
+ ledMatrix[1][7] = 1;
  ledMatrix[2][0] = 1;
  ledMatrix[2][1] = 1;
- ledMatrix[2][2] = 1;
- ledMatrix[2][3] = 1;
  Serial.print("mtwenty five ");
 }
 
 void r_mhalf()
 {
- ledMatrix[0][7] = 1;
- ledMatrix[0][8] = 1;
- ledMatrix[0][9] = 1;
- ledMatrix[0][10] = 1;
+ ledMatrix[0][3] = 1;
+ ledMatrix[0][4] = 1;
+ ledMatrix[0][5] = 1;
  Serial.print("mhalf ");
 }
 
 void r_hone()
 {
- ledMatrix[3][6] = 1;
- ledMatrix[3][7] = 1;
- ledMatrix[3][8] = 1;
+ ledMatrix[3][3] = 1;
+ ledMatrix[3][4] = 1;
  Serial.print("hone ");
 }
 
 void r_htwo()
 {
+ ledMatrix[4][0] = 1;
  ledMatrix[4][1] = 1;
- ledMatrix[4][2] = 1;
- ledMatrix[4][3] = 1;
  Serial.print("htwo ");
 }
 
 void r_hthree()
 {
- ledMatrix[3][10] = 1;
- ledMatrix[3][11] = 1;
- ledMatrix[4][12] = 1;
- ledMatrix[3][13] = 1;
- ledMatrix[3][14] = 1;
+ ledMatrix[3][7] = 1;
+ ledMatrix[3][6] = 1;
  Serial.print("hthree ");
 }
 
 void r_hfour()
 {
- ledMatrix[4][5] = 1;
- ledMatrix[4][6] = 1;
- ledMatrix[4][7] = 1;
- ledMatrix[4][8] = 1;
+    ledMatrix[4][2] = 1;
+    ledMatrix[4][3] = 1;
+    ledMatrix[4][4] = 1;
  Serial.print("hfour ");
 }
 
 void r_hfive()
 {
- ledMatrix[5][12] = 1;
- ledMatrix[5][13] = 1;
- ledMatrix[5][14] = 1;
- ledMatrix[5][15] = 1;
+ ledMatrix[5][6] = 1;
+ ledMatrix[5][7] = 1;
  Serial.print("hfive ");
 }
 
 void r_hsix()
 {
- ledMatrix[6][13] = 1;
- ledMatrix[6][14] = 1;
- ledMatrix[6][15] = 1;
+ ledMatrix[6][6] = 1;
+ ledMatrix[6][7] = 1;
  Serial.print("hsix ");
 }
 
 void r_hseven()
 {
- ledMatrix[6][7] = 1;
- ledMatrix[6][8] = 1;
- ledMatrix[6][9] = 1;
- ledMatrix[6][10] = 1;
- ledMatrix[6][11] = 1;
+ ledMatrix[6][3] = 1;
+ ledMatrix[6][4] = 1;
+ ledMatrix[6][5] = 1;
  Serial.print("hseven ");
 }
 
 void r_height()
 {
- ledMatrix[4][11] = 1;
- ledMatrix[4][12] = 1;
- ledMatrix[4][13] = 1;
- ledMatrix[4][14] = 1;
- ledMatrix[4][15] = 1;
+ ledMatrix[4][5] = 1;
+ ledMatrix[4][6] = 1;
+ ledMatrix[4][7] = 1;
  Serial.print("height");
 }
 
 void r_hnine()
 {
+ ledMatrix[6][0] = 1;
  ledMatrix[6][1] = 1;
  ledMatrix[6][2] = 1;
- ledMatrix[6][3] = 1;
- ledMatrix[6][4] = 1;
  Serial.print("hnine ");
 }
 
 void r_hten()
 {
- ledMatrix[5][7] = 1;
- ledMatrix[5][8] = 1;
- ledMatrix[5][9] = 1;
+ ledMatrix[5][4] = 1;
+ ledMatrix[5][5] = 1;
  Serial.print("hten");
 }
 
@@ -470,8 +443,6 @@ void r_heleven()
  ledMatrix[5][1] = 1;
  ledMatrix[5][2] = 1;
  ledMatrix[5][3] = 1;
- ledMatrix[5][4] = 1; 
- ledMatrix[5][5] = 1;
  Serial.print("heleven ");
 }
 
@@ -481,8 +452,6 @@ void r_htwelve()
  ledMatrix[7][1] = 1;
  ledMatrix[7][2] = 1;
  ledMatrix[7][3] = 1;
- ledMatrix[7][4] = 1; 
- ledMatrix[7][5] = 1;
  Serial.print("htwelve ");
 }
 
@@ -491,13 +460,12 @@ void r_past()
  ledMatrix[3][1] = 1;
  ledMatrix[3][2] = 1;
  ledMatrix[3][2] = 1;
- ledMatrix[3][3] = 1;
  Serial.print("past");
 }
 
 void r_to()
 {
- ledMatrix[2][14] = 1;
- ledMatrix[2][15] = 1;
+ ledMatrix[2][6] = 1;
+ ledMatrix[2][7] = 1;
  Serial.print("to ");
 }
