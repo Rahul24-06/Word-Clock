@@ -69,7 +69,7 @@ int ledMatrix[8][8] = {
   };
 
 int ledCount = 64;  // the 8x8 grid of the Neomatrix
-
+int i=0,j=0;
 void setup() {
   // put your setup code here, to run once:
 
@@ -167,72 +167,72 @@ else
 }
   
 // hours
-if((theTime.hour() ==  1 ) || (theTime.hour() ==  13 )
+if((theTime.hour() ==  1 ) || (theTime.hour() ==  13 ))
 {
  r_hone();
 }
 
-if((theTime.hour() ==  2 ) || (theTime.hour() ==  14 )
+if((theTime.hour() ==  2 ) || (theTime.hour() ==  14 ))
 {
  r_htwo();
 }
 
-if((theTime.hour() ==  3 ) || (theTime.hour() ==  15 )
+if((theTime.hour() ==  3 ) || (theTime.hour() ==  15 ))
 {
  r_hthree();
 }
 
-if((theTime.hour() ==  4 ) || (theTime.hour() ==  16 )
+if((theTime.hour() ==  4 ) || (theTime.hour() ==  16 ))
 {
  r_hfour();
 }
 
-if((theTime.hour() ==  5 ) || (theTime.hour() ==  17 )
+if((theTime.hour() ==  5 ) || (theTime.hour() ==  17 ))
 {
  r_hfive();
 }
 
-if((theTime.hour() ==  6 ) || (theTime.hour() ==  18 )
+if((theTime.hour() ==  6 ) || (theTime.hour() ==  18 ))
 {
  r_hsix();
 }
 
-if((theTime.hour() ==  7 ) || (theTime.hour() ==  19 )
+if((theTime.hour() ==  7 ) || (theTime.hour() ==  19 ))
 {
  r_hseven();
 }
 
-if((theTime.hour() ==  8 ) || (theTime.hour() ==  20 )
+if((theTime.hour() ==  8 ) || (theTime.hour() ==  20 ))
 {
  r_height();
 }
 
-if((theTime.hour() ==  9 ) || (theTime.hour() ==  21 )
+if((theTime.hour() ==  9 ) || (theTime.hour() ==  21 ))
 {
  r_hnine();
 }
 
 
-if((theTime.hour() ==  10 ) || (theTime.hour() ==  22 )
+if((theTime.hour() ==  10 ) || (theTime.hour() ==  22 ))
 {
  r_hten();
 }
 
-if((theTime.hour() ==  11 ) || (theTime.hour() ==  23 )
+if((theTime.hour() ==  11 ) || (theTime.hour() ==  23 ))
 {
  r_heleven();
 }
 
 
-if((theTime.hour() ==  12 ) || (theTime.hour() ==  0 )
+if((theTime.hour() ==  12 ) || (theTime.hour() ==  0 ))
 {
  r_htwelve();
 }
 
 //it's show time....
 
-for(int i = 0; i < 8; i++) {
-    for(int j = 0; j < 8; j++) {
+for(i = 0; i < 8; i++) {
+    for(j = 0; j < 8; j++) {
       if (ledMatrix[i][j] == 1) {
         matrix.drawPixel(i, j, matrix.Color(255, 255, 0));
       }
