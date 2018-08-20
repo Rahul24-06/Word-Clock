@@ -8,6 +8,10 @@ It can be printed and assembled over a weekend.
 
 Tutorial:  [Word Clock by DIY Machines ](https://www.electromaker.io/project/view/word-clock-customisable-and-easy-to-build)
 
+**Version Update:**
+
+ E-Clock: 
+   Improvised code using function call
 
 **Features:**
  - 3D printed body
