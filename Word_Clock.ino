@@ -1,4 +1,5 @@
  /*
+
  This code requires the following libraries:
 
    - RTClib https://github.com/adafruit/RTClib
@@ -6,7 +7,14 @@
    - Adafruit_GFX https://github.com/adafruit/Adafruit-GFX-Library
    - Adafruit_NeoPixel https://github.com/adafruit/Adafruit_NeoPixel
    - Adafruit_NeoMatrix https://github.com/adafruit/Adafruit_NeoMatrix
+ 
+ Functions for Clock
+ *  
+ *  By: thelonelyprogrammer
+ *  YouTube channel: https://www.youtube.com/channel/UCks-9JSnVb22dlqtMgPjrlg/videos
 
+
+ 
    grid pattern
 
     I T S H I S T H A L F B R T E N
@@ -61,402 +69,170 @@ int ledMatrix[8][8] = {
   };
 
 int ledCount = 64;  // the 8x8 grid of the Neomatrix
-
+int i=0,j=0;
 void setup() {
   // put your setup code here, to run once:
 
 
 //Serial for debugging
   Serial.begin(9600);
-
-  // set pinmodes
+// set pinmodes
   pinMode(NEOPIN, OUTPUT);
-
-
-
-  // start clock
+// start clock
   Wire.begin();  // Begin I2C
   RTC.begin();   // begin clock
   RTC.adjust(DateTime(__DATE__, __TIME__));
-
-
-
   matrix.begin();
   matrix.setBrightness(100);
   matrix.fillScreen(0); // Initialize all pixels to 'off'
   matrix.show();
-
-  
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
   // get the time
   theTime = dst_rtc.calculateTime(RTC.now()); 
   // add 2.5 minutes to get better estimates
   theTime = theTime.unixtime() + 150;
 
+  r_its();//write 'it is' everytime:
 
-
-//write 'it is' everytime:
-ledMatrix[0][0] = 1;
-ledMatrix[0][1] = 1;
-
-
-
-if ((theTime.minute() > 4) && (theTime.minute() < 10)) {
-    ledMatrix[2][0] = 1;
-    ledMatrix[2][1] = 1;
-    ledMatrix[2][2] = 1;
-     Serial.print("mfive ");
-  }
-  if ((theTime.minute() > 9) && (theTime.minute() < 15)) {
-    ledMatrix[0][6] = 1;
-    ledMatrix[0][7] = 1;
-     Serial.print("mten ");
-  }
-  if ((theTime.minute() > 14) && (theTime.minute() < 20)) {
-    ledMatrix[1][0] = 1;
-    ledMatrix[1][1] = 1;
-    ledMatrix[1][2] = 1;
-    ledMatrix[1][3] = 1;
-     Serial.print("mquarter ");
-  }
-  if ((theTime.minute() > 19) && (theTime.minute() < 25)) {
-    ledMatrix[1][4] = 1;
-    ledMatrix[1][5] = 1;
-    ledMatrix[1][6] = 1;
-    ledMatrix[1][7] = 1;
-     Serial.print("mtwenty ");
-  }
-  if ((theTime.minute() > 24) && (theTime.minute() < 30)) {
-    ledMatrix[1][4] = 1;
-    ledMatrix[1][5] = 1;
-    ledMatrix[1][6] = 1;
-    ledMatrix[1][7] = 1;
-    ledMatrix[2][0] = 1;
-    ledMatrix[2][1] = 1;
-    ledMatrix[2][1] = 1;
-     Serial.print("mtwenty five ");
-  }
-  if ((theTime.minute() > 29) && (theTime.minute() < 35)) {
-    ledMatrix[0][3] = 1;
-    ledMatrix[0][4] = 1;
-    ledMatrix[0][5] = 1;
-     Serial.print("mhalf ");
-  }
-  if ((theTime.minute() > 34) && (theTime.minute() < 40)) {
-    ledMatrix[1][4] = 1;
-    ledMatrix[1][5] = 1;
-    ledMatrix[1][6] = 1;
-    ledMatrix[1][7] = 1;
-    ledMatrix[2][0] = 1;
-    ledMatrix[2][1] = 1;
-    ledMatrix[2][1] = 1;
-     Serial.print("mtwenty five ");
-  }
-  if ((theTime.minute() > 39) && (theTime.minute() < 45)) {
-    ledMatrix[1][4] = 1;
-    ledMatrix[1][5] = 1;
-    ledMatrix[1][6] = 1;
-    ledMatrix[1][7] = 1;
-     Serial.print("mtwenty ");
-  }
-  if ((theTime.minute() > 44) && (theTime.minute() < 50)) {
-    ledMatrix[1][0] = 1;
-    ledMatrix[1][1] = 1;
-    ledMatrix[1][2] = 1;
-    ledMatrix[1][3] = 1;
-     Serial.print("mquarter ");
-  }
-  if ((theTime.minute() > 49) && (theTime.minute() < 55)) {
-    ledMatrix[0][6] = 1;
-    ledMatrix[0][7] = 1;
-     Serial.print("mten");
-  }
-  if (theTime.minute() > 54) {
-    ledMatrix[2][0] = 1;
-    ledMatrix[2][1] = 1;
-    ledMatrix[2][2] = 1;
-     Serial.print("mfive ");
-  }
-
-
-  if ((theTime.minute() < 5))
+//Minutes
+ 
+if ((theTime.minute() > 4) && (theTime.minute() < 10)) 
   {
-    switch (theTime.hour()) {
-      case 1:
-      case 13:
-    ledMatrix[3][3] = 1;
-    ledMatrix[3][4] = 1;
-     Serial.print("hone ");
-        break;
-      case 2:
-      case 14:
-    ledMatrix[4][0] = 1;
-    ledMatrix[4][1] = 1;
-     Serial.print("htwo ");
-        break;
-      case 3:
-      case 15:
-    ledMatrix[3][7] = 1;
-    ledMatrix[3][6] = 1;
-     Serial.print("hthree ");
-        break;
-      case 4:
-      case 16:
-    ledMatrix[4][2] = 1;
-    ledMatrix[4][3] = 1;
-    ledMatrix[4][4] = 1;
-     Serial.print("hfour ");
-        break;
-      case 5:
-      case 17:
-    ledMatrix[5][6] = 1;
-    ledMatrix[5][7] = 1;
-     Serial.print("hfive ");
-        break;
-      case 6:
-      case 18:
-    ledMatrix[6][6] = 1;
-    ledMatrix[6][7] = 1;
-     Serial.print("hsix ");
-        break;
-      case 7:
-      case 19:
-    ledMatrix[6][3] = 1;
-    ledMatrix[6][4] = 1;
-    ledMatrix[6][5] = 1;
-     Serial.print("hseven ");
-        break;
-      case 8:
-      case 20:
-    ledMatrix[4][5] = 1;
-    ledMatrix[4][6] = 1;
-    ledMatrix[4][7] = 1;
-     Serial.print("height ");
-        break;
-      case 9:
-      case 21:
-    ledMatrix[6][0] = 1;
-    ledMatrix[6][1] = 1;
-    ledMatrix[6][2] = 1;
-     Serial.print("hnine ");
-        break;
-      case 10:
-      case 22:
-    ledMatrix[5][4] = 1;
-    ledMatrix[5][5] = 1;
-     Serial.print("hten ");
-        break;
-      case 11:
-      case 23:
-    ledMatrix[5][0] = 1;
-    ledMatrix[5][1] = 1;
-    ledMatrix[5][2] = 1;
-    ledMatrix[5][3] = 1;
-     Serial.print("heleven ");
-        break;
-      case 0:
-      case 12:
-    ledMatrix[7][0] = 1;
-    ledMatrix[7][1] = 1;
-    ledMatrix[7][2] = 1;
-    ledMatrix[7][3] = 1;
-     Serial.print("htwelve ");
-        break;
-    }
-
+  r_mfive();
   }
-  else if ((theTime.minute() < 35) && (theTime.minute() > 4))
-  {
-    ledMatrix[3][0] = 1;
-    ledMatrix[3][1] = 1;
-    ledMatrix[3][2] = 1;
-     Serial.print("past");
-   switch (theTime.hour()) {
-      case 1:
-      case 13:
-    ledMatrix[3][3] = 1;
-    ledMatrix[3][4] = 1;
-     Serial.print("one ");
-        break;
-      case 2:
-      case 14:
-    ledMatrix[4][0] = 1;
-    ledMatrix[4][1] = 1;
-     Serial.print("two ");
-        break;
-      case 3:
-      case 15:
-    ledMatrix[3][7] = 1;
-    ledMatrix[3][6] = 1;
-     Serial.print("three ");
-        break;
-      case 4:
-      case 16:
-    ledMatrix[4][2] = 1;
-    ledMatrix[4][3] = 1;
-    ledMatrix[4][4] = 1;
-     Serial.print("four ");
-        break;
-      case 5:
-      case 17:
-    ledMatrix[5][6] = 1;
-    ledMatrix[5][7] = 1;
-     Serial.print("five ");
-        break;
-      case 6:
-      case 18:
-    ledMatrix[6][6] = 1;
-    ledMatrix[6][7] = 1;
-     Serial.print("six ");
-        break;
-      case 7:
-      case 19:
-    ledMatrix[6][3] = 1;
-    ledMatrix[6][4] = 1;
-    ledMatrix[6][5] = 1;
-     Serial.print("seven ");
-        break;
-      case 8:
-      case 20:
-    ledMatrix[4][5] = 1;
-    ledMatrix[4][6] = 1;
-    ledMatrix[4][7] = 1;
-     Serial.print("eight ");
-        break;
-      case 9:
-      case 21:
-    ledMatrix[6][0] = 1;
-    ledMatrix[6][1] = 1;
-    ledMatrix[6][2] = 1;
-     Serial.print("nine ");
-        break;
-      case 10:
-      case 22:
-    ledMatrix[5][4] = 1;
-    ledMatrix[5][5] = 1;
-     Serial.print("ten ");
-        break;
-      case 11:
-      case 23:
-    ledMatrix[5][0] = 1;
-    ledMatrix[5][1] = 1;
-    ledMatrix[5][2] = 1;
-    ledMatrix[5][3] = 1;
-     Serial.print("eleven ");
-        break;
-      case 0:
-      case 12:
-    ledMatrix[7][0] = 1;
-    ledMatrix[7][1] = 1;
-    ledMatrix[7][2] = 1;
-    ledMatrix[7][3] = 1;
-     Serial.print("twelve ");
-        break;
-    }
-  }
-  else
-  {
-    // if we are greater than 34 minutes past the hour then display
-    // the next hour, as we will be displaying a 'to' sign
-    ledMatrix[2][6] = 1;
-    ledMatrix[2][7] = 1;
-     Serial.print("to ");
-    //Serial.print(" to ");
-    switch (theTime.hour()) {
-      case 1:
-      case 13:
-    ledMatrix[4][0] = 1;
-    ledMatrix[4][1] = 1;
-     Serial.print("two ");
-        break;
-      case 14:
-      case 2:
-    ledMatrix[3][7] = 1;
-    ledMatrix[3][6] = 1;
-     Serial.print("three ");
-        break;
-      case 15:
-      case 3:
-    ledMatrix[4][2] = 1;
-    ledMatrix[4][3] = 1;
-    ledMatrix[4][4] = 1;
-     Serial.print("four ");
-        break;
-      case 4:
-      case 16:
-    ledMatrix[5][6] = 1;
-    ledMatrix[5][7] = 1;
-     Serial.print("five ");
-        break;
-      case 5:
-      case 17:
-    ledMatrix[6][6] = 1;
-    ledMatrix[6][7] = 1;
-     Serial.print("six ");
-        break;
-      case 6:
-      case 18:
-    ledMatrix[6][3] = 1;
-    ledMatrix[6][4] = 1;
-    ledMatrix[6][5] = 1;
-     Serial.print("seven ");
-        break;
-      case 7:
-      case 19:
-    ledMatrix[4][5] = 1;
-    ledMatrix[4][6] = 1;
-    ledMatrix[4][7] = 1;
-     Serial.print("eight ");
-        break;
-      case 8:
-      case 20:
-    ledMatrix[6][0] = 1;
-    ledMatrix[6][1] = 1;
-    ledMatrix[6][2] = 1;
-     Serial.print("nine ");
-        break;
-      case 9:
-      case 21:
-    ledMatrix[5][4] = 1;
-    ledMatrix[5][5] = 1;
-     Serial.print("ten ");
-        break;
-      case 10:
-      case 22:
-    ledMatrix[5][0] = 1;
-    ledMatrix[5][1] = 1;
-    ledMatrix[5][2] = 1;
-    ledMatrix[5][3] = 1;
-     Serial.print("eleven ");
-        break;
-      case 11:
-      case 23:
-    ledMatrix[7][0] = 1;
-    ledMatrix[7][1] = 1;
-    ledMatrix[7][2] = 1;
-    ledMatrix[7][3] = 1;
-     Serial.print("twelve ");
-        break;
-      case 0:
-      case 12:
-    ledMatrix[3][3] = 1;
-    ledMatrix[3][4] = 1;
-     Serial.print("one ");
-        break;
-    }
-  }
+  
+if ((theTime.minute() > 9) && (theTime.minute() < 15)) 
+{
+  r_mten();
+}
 
-//=======================================================
-//=======================================================
+if ((theTime.minute() > 14) && (theTime.minute() < 20)) 
+{
+  r_quarter();
+}
 
+if ((theTime.minute() > 19) && (theTime.minute() < 25)) 
+{
+ r_mtwenty();
+}
+
+if ((theTime.minute() > 24) && (theTime.minute() < 30)) 
+{
+ r_mtwenty_five();
+}
+
+if ((theTime.minute() > 29) && (theTime.minute() < 35)) 
+{
+ r_mhalf();
+}
+
+if ((theTime.minute() > 34) && (theTime.minute() < 40)) 
+{
+ r_mtwenty_five();
+}
+ 
+if ((theTime.minute() > 39) && (theTime.minute() < 45)) 
+{
+ r_mtwenty();
+}
+
+if ((theTime.minute() > 44) && (theTime.minute() < 50)) 
+{
+ r_quarter();
+}
+  
+if ((theTime.minute() > 49) && (theTime.minute() < 55)) 
+{
+ r_mten();
+}
+
+if (theTime.minute() > 54) 
+{
+ r_mfive();
+}
+
+
+// Past or two
+if ((theTime.minute() < 5)) {  }
+
+else if ((theTime.minute() < 35) && (theTime.minute() > 4))
+{
+ r_past();  
+}
+else
+{
+ r_to();
+}
+  
+// hours
+if((theTime.hour() ==  1 ) || (theTime.hour() ==  13 ))
+{
+ r_hone();
+}
+
+if((theTime.hour() ==  2 ) || (theTime.hour() ==  14 ))
+{
+ r_htwo();
+}
+
+if((theTime.hour() ==  3 ) || (theTime.hour() ==  15 ))
+{
+ r_hthree();
+}
+
+if((theTime.hour() ==  4 ) || (theTime.hour() ==  16 ))
+{
+ r_hfour();
+}
+
+if((theTime.hour() ==  5 ) || (theTime.hour() ==  17 ))
+{
+ r_hfive();
+}
+
+if((theTime.hour() ==  6 ) || (theTime.hour() ==  18 ))
+{
+ r_hsix();
+}
+
+if((theTime.hour() ==  7 ) || (theTime.hour() ==  19 ))
+{
+ r_hseven();
+}
+
+if((theTime.hour() ==  8 ) || (theTime.hour() ==  20 ))
+{
+ r_height();
+}
+
+if((theTime.hour() ==  9 ) || (theTime.hour() ==  21 ))
+{
+ r_hnine();
+}
+
+
+if((theTime.hour() ==  10 ) || (theTime.hour() ==  22 ))
+{
+ r_hten();
+}
+
+if((theTime.hour() ==  11 ) || (theTime.hour() ==  23 ))
+{
+ r_heleven();
+}
+
+
+if((theTime.hour() ==  12 ) || (theTime.hour() ==  0 ))
+{
+ r_htwelve();
+}
 
 //it's show time....
 
-for(int i = 0; i < 8; i++) {
+ 
+ for(int i = 0; i < 8; i++) {
     for(int j = 0; j < 8; j++) {
       if ((ledMatrix[i][j] == 1) && (theTime.hour() < 13)){
         matrix.drawPixel(i, j, matrix.Color(255, 255, 0)); //yellow/Gold
@@ -478,10 +254,8 @@ for(int i = 0; i < 8; i++) {
 displayTime();
 checkArray();
 matrix.show();
-
 delay(5000);
 resetArray();
-
 }
 
 
@@ -531,4 +305,171 @@ void displayTime() {
   Serial.print(':');
   Serial.print(theTime.second(), DEC);
   Serial.println();
+}
+
+/***************** Functions***********************/
+void r_its()
+{
+//write 'it is' everytime:
+ ledMatrix[0][0] = 1;
+ ledMatrix[0][1] = 1;
+ ledMatrix[0][0] = 1;
+}
+void r_mfive()
+{
+ ledMatrix[2][0] = 1;
+ ledMatrix[2][1] = 1;
+ ledMatrix[2][2] = 1;
+ Serial.print("mfive ");
+}
+
+void r_mten()
+{
+ ledMatrix[0][6] = 1;
+ ledMatrix[0][7] = 1;
+ Serial.print("mten ");
+}
+
+void r_quarter()
+{
+ ledMatrix[1][0] = 1;
+ ledMatrix[1][1] = 1;
+ ledMatrix[1][2] = 1;
+ ledMatrix[1][3] = 1;
+ Serial.print("mquarter ");
+}
+
+void r_mtwenty ()
+{
+ ledMatrix[1][4] = 1;
+ ledMatrix[1][5] = 1;
+ ledMatrix[1][6] = 1;
+ ledMatrix[1][7] = 1;
+ Serial.print("mtwenty ");
+}
+ 
+void r_mtwenty_five()
+{
+ ledMatrix[1][4] = 1;
+ ledMatrix[1][5] = 1;
+ ledMatrix[1][6] = 1;
+ ledMatrix[1][7] = 1;
+ ledMatrix[2][0] = 1;
+ ledMatrix[2][1] = 1;
+ Serial.print("mtwenty five ");
+}
+
+void r_mhalf()
+{
+ ledMatrix[0][3] = 1;
+ ledMatrix[0][4] = 1;
+ ledMatrix[0][5] = 1;
+ Serial.print("mhalf ");
+}
+
+void r_hone()
+{
+ ledMatrix[3][3] = 1;
+ ledMatrix[3][4] = 1;
+ Serial.print("hone ");
+}
+
+void r_htwo()
+{
+ ledMatrix[4][0] = 1;
+ ledMatrix[4][1] = 1;
+ Serial.print("htwo ");
+}
+
+void r_hthree()
+{
+ ledMatrix[3][7] = 1;
+ ledMatrix[3][6] = 1;
+ Serial.print("hthree ");
+}
+
+void r_hfour()
+{
+    ledMatrix[4][2] = 1;
+    ledMatrix[4][3] = 1;
+    ledMatrix[4][4] = 1;
+ Serial.print("hfour ");
+}
+
+void r_hfive()
+{
+ ledMatrix[5][6] = 1;
+ ledMatrix[5][7] = 1;
+ Serial.print("hfive ");
+}
+
+void r_hsix()
+{
+ ledMatrix[6][6] = 1;
+ ledMatrix[6][7] = 1;
+ Serial.print("hsix ");
+}
+
+void r_hseven()
+{
+ ledMatrix[6][3] = 1;
+ ledMatrix[6][4] = 1;
+ ledMatrix[6][5] = 1;
+ Serial.print("hseven ");
+}
+
+void r_height()
+{
+ ledMatrix[4][5] = 1;
+ ledMatrix[4][6] = 1;
+ ledMatrix[4][7] = 1;
+ Serial.print("height");
+}
+
+void r_hnine()
+{
+ ledMatrix[6][0] = 1;
+ ledMatrix[6][1] = 1;
+ ledMatrix[6][2] = 1;
+ Serial.print("hnine ");
+}
+
+void r_hten()
+{
+ ledMatrix[5][4] = 1;
+ ledMatrix[5][5] = 1;
+ Serial.print("hten");
+}
+
+void r_heleven()
+{
+ ledMatrix[5][0] = 1;
+ ledMatrix[5][1] = 1;
+ ledMatrix[5][2] = 1;
+ ledMatrix[5][3] = 1;
+ Serial.print("heleven ");
+}
+
+void r_htwelve()
+{
+ ledMatrix[7][0] = 1;
+ ledMatrix[7][1] = 1;
+ ledMatrix[7][2] = 1;
+ ledMatrix[7][3] = 1;
+ Serial.print("htwelve ");
+}
+
+void r_past()
+{
+ ledMatrix[3][1] = 1;
+ ledMatrix[3][2] = 1;
+ ledMatrix[3][2] = 1;
+ Serial.print("past");
+}
+
+void r_to()
+{
+ ledMatrix[2][6] = 1;
+ ledMatrix[2][7] = 1;
+ Serial.print("to ");
 }
