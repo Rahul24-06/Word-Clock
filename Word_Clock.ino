@@ -102,9 +102,6 @@ void loop() {
 //write 'it is' everytime:
 ledMatrix[0][0] = 1;
 ledMatrix[0][1] = 1;
-ledMatrix[0][0] = 1;
-
-
 
 
 
